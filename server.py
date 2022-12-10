@@ -44,4 +44,4 @@ def download():
         #return jsonify({"pdfFileLocation": url_for('static', filename=pdfFileLocation)})
         return send_from_directory(directory='static', path=pdfFileLocation)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
