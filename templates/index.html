@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Secular Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    
+    <!-- Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body style="font-family:'Montserrat';">
+    <nav class="flex flex-row justify-center md:justify-between p-5 bg-slate-800 fixed w-screen">
+        <span class="text-amber-500 text-2xl" style="font-family:'Secular one';">
+            Video to PDF
+        </span>
+        
+        <div class="text-white text-xl hidden md:flex flex-row gap-5">
+            <a href="#">Home</a>
+            <a href="#">How to use </a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+    <main class="container flex flex-col items-center w-screen min-h-screen pt-20 mx-auto">
+        <div class="mt-10 border-2 p-10 mx-2 lg:w-1/2">
+            <h1 class="text-2xl text-center text-slate-800">Convert Video to PDF</h1>
+
+            <form class="grid grid-cols-5 my-5">
+                <div class="col-span-3 lg:col-span-4">
+                    <input type="text" class="w-full p-2 border-2 border-slate-800 text-sm" placeholder="youtube.com/watch?v=...">
+                </div>
+                <div class="col-span-2 lg:col-span-1">
+                    <button class="w-full h-full  bg-slate-800 text-white bg-amber-500">Convert</button>
+                </div>
+            </form>
+            
+            <div class="grid grid-cols-5 gap-2 items-center">
+                <div class="col-span-full md:col-span-2 overflow-hidden">
+                    <img src="https://via.placeholder.com/400x250" class="md:h-32 w-full object-cover" alt="">
+                </div>
+
+                <div class="col-span-full md:col-span-3 flex flex-col justify-between h-full">
+                    <div>
+                        <h1 class="truncate text-lg font-medium">
+                            C_57 Two Dimensional Array progravf enfue uneguie gengi eign
+                        </h1>
+                        <h2 class="truncate text-md font-medium text-gray-600">
+                            15:39
+                        </h2>
+                    </div>
+                    <div class="flex flex-col w-full">
+                        <p>
+                            <span class="text-gray-600 text-sm">Please Select Skip Seconds</span>
+                        </p>
+                        <form class="flex flex-row justify-between gap-3 w-full">
+                            <div class="relative w-full">
+                                <select class="flex flex-row justify-around appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-full">
+                                    <option value="10">10sec</option>
+                                    <option value="15">15sec</option>
+                                    <option value="20">20sec</option>
+                                    <option value="30">30sec</option>
+                                    <option value="35">45sec</option>
+                                    <option value="60">1min</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                            <button class="w-full h-full bg-slate-800 text-white p-2 bg-green-600">Download&nbsp;PDF</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </main>
+</body>
+</html>
