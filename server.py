@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify, url_for, send_from_directory
 
+import os
+
 from video_to_image import videoToimg
 from yt_download import download_video, get_video_id, get_video_data
 from image2pdf import imageToPdf
@@ -44,4 +46,4 @@ def download():
         #return jsonify({"pdfFileLocation": url_for('static', filename=pdfFileLocation)})
         return send_from_directory(directory='static', path=pdfFileLocation)
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False, port=os.getenv("PORT", default=5000))
