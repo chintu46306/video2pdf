@@ -1,3 +1,3 @@
 [phases.setup]
-nixLibs = ['libstdcxx5']
+nixPkgs = ['libstdcxx5']
 aptPkgs = ['libsm6','libxrender1','libfontconfig1','libice6']
