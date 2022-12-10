@@ -5,6 +5,10 @@ def get_video_id(url):
     yt = YouTube(url)
     return yt.video_id
 
+def get_video_data(url):
+    yt = YouTube(url)
+    return {"title" : yt.title, "thumbnail": yt.thumbnail_url, "duration_sec" : yt.length}
+
 def download_video(url):
     yt = YouTube(url)
 

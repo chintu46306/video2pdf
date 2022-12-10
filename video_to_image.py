@@ -21,7 +21,7 @@ def videoToimg(id, videoFileLocation, skipFrame):
     currentframe = 0
 
     # seconds to skip
-    skip = 30
+    skip = int(skipFrame)
 
     while (True):
 
@@ -38,7 +38,7 @@ def videoToimg(id, videoFileLocation, skipFrame):
             # explain above line
             # increasing counter so that it will
             # show how many frames are created
-            currentframe += 30*skip
+            currentframe += 30*int(skip)
             vid.set(1, currentframe)
         else:
             break

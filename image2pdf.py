@@ -2,7 +2,7 @@ import img2pdf
 import os
 
 def imageToPdf(id, imageFolder):
-    folder = "pdf/"
+    folder = "static/pdf/"
     if not os.path.exists(folder):
         os.makedirs(folder)
 

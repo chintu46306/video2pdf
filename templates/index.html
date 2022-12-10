@@ -33,26 +33,26 @@
         <div class="mt-10 border-2 p-10 mx-2 lg:w-1/2">
             <h1 class="text-2xl text-center text-slate-800">Convert Video to PDF</h1>
 
-            <form class="grid grid-cols-5 my-5">
+            <form class="grid grid-cols-5 my-5"  onsubmit="handelSubmit(event);">
                 <div class="col-span-3 lg:col-span-4">
-                    <input type="text" class="w-full p-2 border-2 border-slate-800 text-sm" placeholder="youtube.com/watch?v=...">
+                    <input name="url" type="text" class="w-full p-2 border-2 border-slate-800 text-sm" placeholder="youtube.com/watch?v=...">
                 </div>
                 <div class="col-span-2 lg:col-span-1">
-                    <button class="w-full h-full  bg-slate-800 text-white bg-amber-500">Convert</button>
+                    <button type="submit" class="w-full h-full  bg-slate-800 text-white bg-amber-500">Convert</button>
                 </div>
             </form>
             
-            <div class="grid grid-cols-5 gap-2 items-center">
+            <div class="hidden grid-cols-5 gap-2 items-center" id="videoDataContainer">
                 <div class="col-span-full md:col-span-2 overflow-hidden">
-                    <img src="https://via.placeholder.com/400x250" class="md:h-32 w-full object-cover" alt="">
+                    <img src="https://via.placeholder.com/400x250" class="md:h-32 w-full object-cover" alt="thumbnail" id="youtubeThumbnail">
                 </div>
 
                 <div class="col-span-full md:col-span-3 flex flex-col justify-between h-full">
                     <div>
-                        <h1 class="truncate text-lg font-medium">
+                        <h1 class="truncate text-lg font-medium" id="youtubeTitle">
                             C_57 Two Dimensional Array progravf enfue uneguie gengi eign
                         </h1>
-                        <h2 class="truncate text-md font-medium text-gray-600">
+                        <h2 class="truncate text-md font-medium text-gray-600" id="youtubeDuration">
                             15:39
                         </h2>
                     </div>
@@ -60,9 +60,10 @@
                         <p>
                             <span class="text-gray-600 text-sm">Please Select Skip Seconds</span>
                         </p>
-                        <form class="flex flex-row justify-between gap-3 w-full">
+                        <form class="flex flex-row justify-between gap-3 w-full" action="{{url_for('download')}}">
+                            <input type="hidden" name="url" id="hiddenUrl">
                             <div class="relative w-full">
-                                <select class="flex flex-row justify-around appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-full">
+                                <select name="skip" class="flex flex-row justify-around appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-full">
                                     <option value="10">10sec</option>
                                     <option value="15">15sec</option>
                                     <option value="20">20sec</option>
@@ -84,5 +85,7 @@
             
         </div>
     </main>
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+
 </body>
 </html>
