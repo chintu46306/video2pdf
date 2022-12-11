@@ -47,4 +47,4 @@ def download():
         return send_from_directory(directory='static', path=pdfFileLocation)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=os.getenv("PORT", default=5000),host='0.0.0.0')
+    app.run(debug=False, port=os.getenv("PORT", default=5000), host='0.0.0.0')
