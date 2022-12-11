@@ -45,5 +45,6 @@ def download():
         pdfFileLocation = imageToPdf(id, imageDirectory)
         #return jsonify({"pdfFileLocation": url_for('static', filename=pdfFileLocation)})
         return send_from_directory(directory='static', path=pdfFileLocation)
+
 if __name__ == '__main__':
     app.run(debug=False, port=os.getenv("PORT", default=5000))
