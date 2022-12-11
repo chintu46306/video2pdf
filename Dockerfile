@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 COPY ./ /app/
 
-CMD ["gunicorn"  , "--bind", "0.0.0.0:$(PORT)", "wsgi:app"]
+CMD ["gunicorn"  , "-c", "python:config", "wsgi:app"]
