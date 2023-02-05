@@ -50,3 +50,4 @@ const handelSubmit2 = (e) => {
     const value = Object.fromEntries(data.entries());
     getVideoData(value.url);
 }
+

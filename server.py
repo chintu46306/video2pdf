@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify, url_for, send_from_d
 import os
 
 from video_to_image import videoToimg
-from yt_download import download_video, get_video_id, get_video_data
+from yt_download import download_video, get_video_id, get_video_data, get_playlist_data
 from image2pdf import imageToPdf
 
 app = Flask(__name__, template_folder='templates')
@@ -12,6 +12,24 @@ app = Flask(__name__, template_folder='templates')
 @app.route('/')
 def hello():
     return render_template('index.html')
+
+@app.route('/yt-playlist')
+def playlist():
+    return render_template('playlist.html')
+
+
+@app.route('/api/getPlaylist', methods=['GET', 'POST'])
+def getPlaylist():
+    if request.method == 'POST':
+        url = request.form['url']
+        #get from url prams
+        playlistData = get_playlist_data(url)
+        return jsonify(playlistData)
+    elif request.method == 'GET':
+        url = request.args.get('url')
+        #get from url prams
+        playlistData = get_playlist_data(url)
+        return jsonify(playlistData)
 
 @app.route('/api/getData', methods=['GET', 'POST'])
 def getData():
@@ -47,4 +65,4 @@ def download():
         return send_from_directory(directory='static', path=pdfFileLocation)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=os.getenv("PORT", default=5000), host='0.0.0.0')
+    app.run(debug=True, port=os.getenv("PORT", default=5000), host='0.0.0.0')
