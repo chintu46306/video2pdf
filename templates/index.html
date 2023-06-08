@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video to PDF</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/4b194ec4dc.js"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,7 +32,7 @@
   </head>
   <body style="font-family: 'Montserrat'">
     <nav
-      class="flex flex-row justify-center md:justify-between p-5 bg-slate-800 fixed w-screen z-50"
+      class="flex flex-row justify-center md:justify-between p-5 bg-slate-800 sticky top-0 left-0 z-50"
     >
       <span class="text-amber-500 text-2xl" style="font-family: 'Secular one'">
         Video to PDF
@@ -34,13 +41,13 @@
       <div class="text-white text-xl hidden md:flex flex-row gap-5">
         <a href="#">Home</a>
         <a href="#how to use">How to use </a>
-        <a href="#">About</a>
+        <a href="#">About Me</a>
       </div>
     </nav>
     <main
       class="container flex flex-col gap-10 items-center w-screen min-h-screen pt-20 px-5 mx-auto"
     >
-      <div class=" border-2 p-10 mx-2 lg:w-1/2 w-full">
+      <div class="border-2 p-10 mx-2 lg:w-1/2 w-full">
         <h1 class="text-2xl text-center text-slate-800">
           Convert Video to PDF
         </h1>
@@ -169,7 +176,39 @@
         </div>
       </div>
 
-      <div class="w-10 h-10 lg:bg-green-500 md:bg-red-500 bg-blue-500"></div>
+      <!-- <div class="w-10 h-10 lg:bg-green-500 md:bg-red-500 bg-blue-500"></div> -->
+
+      <!-- added about section -->
+      <div id="about-us" class="border-2 py-5 px-3 lg:w-1/2 w-full">
+        <div>
+          <h2 class="text-center text-1xl"><b>About Me </b></h2>
+          <h3>Hi ,</h3>
+          <p>
+            I'm Chintu Raj Gupta, a BTech student with a passion for web
+            development and programming. I'm  a developer, programmer, and
+            designer, and <br />I love finding new ways to solve problems. I'm
+            always looking for new challenges, and I'm always willing to put in
+            the extra effort to get the job done.<br> I'm also a team player, and
+            I'm always willing to help others. I'm excited to see what the
+            future holds, and I'm confident that I can achieve my goals.
+          </p>
+          <br /><br />
+          <!-- added social link -->
+          <div id=" socila-link" class="social">
+            <a href="https://github.com/chintu46306"
+              ><i class="fa-brands fa-github text-3xl"></i
+            ></a>
+            <a href="https://www.linkedin.com/in/chintu-raj-gupta-00a492222/"
+              ><i class="fa-brands fa-linkedin text-3xl"></i
+            ></a>
+            <a href="https://www.instagram.com/gupta_chintu46306/"
+              ><i class="fa-brands fa-instagram text-3xl"></i
+            ></a>
+          </div>
+          <br /><br />
+          <a href="" class="lern-more colo">Learn More...</a>
+        </div>
+      </div>
     </main>
     <script src="{{url_for('static', filename='app.js')}}"></script>
   </body>
