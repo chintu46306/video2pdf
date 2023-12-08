@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video to PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Secular Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="font-family: 'Montserrat'">
+    <nav
+      class="flex flex-row justify-center md:justify-between p-5 bg-slate-800 fixed w-screen z-50"
+    >
+      <span class="text-amber-500 text-2xl" style="font-family: 'Secular one'">
+        Video to PDF
+      </span>
+
+      <div class="text-white text-xl hidden md:flex flex-row gap-5">
+        <a href="#">Home</a>
+        <a href="#how to use">How to use </a>
+        <a href="#">About</a>
+      </div>
+    </nav>
+    <main
+      class="container flex flex-col gap-10 items-center w-screen min-h-screen pt-20 px-5 mx-auto"
+    >
+      <div class="border-2 p-10 mx-2 lg:w-1/2 w-full">
+        <h1 class="text-2xl text-center text-slate-800">
+          Convert Playlist to PDF
+        </h1>
+
+        <form class="grid grid-cols-5 my-5" onsubmit="handelSubmit(event);">
+          <div class="col-span-3 lg:col-span-4">
+            <input
+              name="url"
+              type="text"
+              class="w-full p-2 border-2 border-slate-800 text-sm"
+              placeholder="youtube.com/watch?v=..."
+            />
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <button
+              type="submit"
+              class="w-full h-full bg-slate-800 text-white bg-amber-500"
+            >
+              Convert
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        id="allVideoContainer"
+        class="border-2 py-5 px-3 lg:w-1/2 w-full h-full flex flex-col gap-5"
+      >
+      <div class="hidden animate-pulse flex flex-col gap-5" id="loadingAnimation">
+        
+        <div class="grid grid-cols-5 items-center gap-2 border-b-2 border-gray-200 py-2">
+          <div class="col-span-2 overflow-hidden">
+            <div class="h-32 w-full bg-slate-400"></div>
+          </div>
+  
+          <div class="col-span-3 flex h-full flex-col justify-between">
+            <div>
+              <div class="h-7 bg-slate-400"></div>
+              <div class="text-md mt-1 h-6 w-24 truncate bg-slate-400 font-medium"></div>
+            </div>
+            <div class="flex w-full flex-col">
+              <p>
+                <span class="text-sm text-gray-600">Please Select Skip Seconds</span>
+              </p>
+              <div class="flex w-full flex-row justify-between gap-3" action="/api/getPdf" target="_blank">
+                <input type="hidden" name="url" value="" />
+                <div class="relative w-full">
+                  <select name="skip" class="flex h-full w-full appearance-none flex-row justify-around rounded border border-gray-200 bg-gray-200 py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none">
+                    <option value="10">10sec</option>
+                    <option value="15">15sec</option>
+                    <option value="20">20sec</option>
+                    <option value="30">30sec</option>
+                    <option value="35">45sec</option>
+                    <option value="60">1min</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <button class="h-full w-full bg-slate-800 bg-green-600 p-2 text-white">Download&nbsp;PDF</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div class="grid grid-cols-5 items-center gap-2 border-b-2 border-gray-200 py-2">
+          <div class="col-span-2 overflow-hidden">
+            <div class="h-32 w-full bg-slate-400"></div>
+          </div>
+  
+          <div class="col-span-3 flex h-full flex-col justify-between">
+            <div>
+              <div class="h-7 bg-slate-400"></div>
+              <div class="text-md mt-1 h-6 w-24 truncate bg-slate-400 font-medium"></div>
+            </div>
+            <div class="flex w-full flex-col">
+              <p>
+                <span class="text-sm text-gray-600">Please Select Skip Seconds</span>
+              </p>
+              <div class="flex w-full flex-row justify-between gap-3" action="/api/getPdf" target="_blank">
+                <input type="hidden" name="url" value="" />
+                <div class="relative w-full">
+                  <select name="skip" class="flex h-full w-full appearance-none flex-row justify-around rounded border border-gray-200 bg-gray-200 py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none">
+                    <option value="10">10sec</option>
+                    <option value="15">15sec</option>
+                    <option value="20">20sec</option>
+                    <option value="30">30sec</option>
+                    <option value="35">45sec</option>
+                    <option value="60">1min</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <button class="h-full w-full bg-slate-800 bg-green-600 p-2 text-white">Download&nbsp;PDF</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div class="grid grid-cols-5 items-center gap-2 border-b-2 border-gray-200 py-2">
+          <div class="col-span-2 overflow-hidden">
+            <div class="h-32 w-full bg-slate-400"></div>
+          </div>
+  
+          <div class="col-span-3 flex h-full flex-col justify-between">
+            <div>
+              <div class="h-7 bg-slate-400"></div>
+              <div class="text-md mt-1 h-6 w-24 truncate bg-slate-400 font-medium"></div>
+            </div>
+            <div class="flex w-full flex-col">
+              <p>
+                <span class="text-sm text-gray-600">Please Select Skip Seconds</span>
+              </p>
+              <div class="flex w-full flex-row justify-between gap-3" action="/api/getPdf" target="_blank">
+                <input type="hidden" name="url" value="" />
+                <div class="relative w-full">
+                  <select name="skip" class="flex h-full w-full appearance-none flex-row justify-around rounded border border-gray-200 bg-gray-200 py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none">
+                    <option value="10">10sec</option>
+                    <option value="15">15sec</option>
+                    <option value="20">20sec</option>
+                    <option value="30">30sec</option>
+                    <option value="35">45sec</option>
+                    <option value="60">1min</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <button class="h-full w-full bg-slate-800 bg-green-600 p-2 text-white">Download&nbsp;PDF</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div class="grid grid-cols-5 items-center gap-2 border-b-2 border-gray-200 py-2">
+          <div class="col-span-2 overflow-hidden">
+            <div class="h-32 w-full bg-slate-400"></div>
+          </div>
+  
+          <div class="col-span-3 flex h-full flex-col justify-between">
+            <div>
+              <div class="h-7 bg-slate-400"></div>
+              <div class="text-md mt-1 h-6 w-24 truncate bg-slate-400 font-medium"></div>
+            </div>
+            <div class="flex w-full flex-col">
+              <p>
+                <span class="text-sm text-gray-600">Please Select Skip Seconds</span>
+              </p>
+              <div class="flex w-full flex-row justify-between gap-3" action="/api/getPdf" target="_blank">
+                <input type="hidden" name="url" value="" />
+                <div class="relative w-full">
+                  <select name="skip" class="flex h-full w-full appearance-none flex-row justify-around rounded border border-gray-200 bg-gray-200 py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none">
+                    <option value="10">10sec</option>
+                    <option value="15">15sec</option>
+                    <option value="20">20sec</option>
+                    <option value="30">30sec</option>
+                    <option value="35">45sec</option>
+                    <option value="60">1min</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <button class="h-full w-full bg-slate-800 bg-green-600 p-2 text-white">Download&nbsp;PDF</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div class="grid grid-cols-5 items-center gap-2 border-b-2 border-gray-200 py-2">
+          <div class="col-span-2 overflow-hidden">
+            <div class="h-32 w-full bg-slate-400"></div>
+          </div>
+  
+          <div class="col-span-3 flex h-full flex-col justify-between">
+            <div>
+              <div class="h-7 bg-slate-400"></div>
+              <div class="text-md mt-1 h-6 w-24 truncate bg-slate-400 font-medium"></div>
+            </div>
+            <div class="flex w-full flex-col">
+              <p>
+                <span class="text-sm text-gray-600">Please Select Skip Seconds</span>
+              </p>
+              <div class="flex w-full flex-row justify-between gap-3" action="/api/getPdf" target="_blank">
+                <input type="hidden" name="url" value="" />
+                <div class="relative w-full">
+                  <select name="skip" class="flex h-full w-full appearance-none flex-row justify-around rounded border border-gray-200 bg-gray-200 py-2 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none">
+                    <option value="10">10sec</option>
+                    <option value="15">15sec</option>
+                    <option value="20">20sec</option>
+                    <option value="30">30sec</option>
+                    <option value="35">45sec</option>
+                    <option value="60">1min</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+                <button class="h-full w-full bg-slate-800 bg-green-600 p-2 text-white">Download&nbsp;PDF</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </main>
+    <script src="{{url_for('static', filename='playlist.js')}}"></script>
+  </body>
+</html>
