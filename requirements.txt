@@ -14,5 +14,5 @@ packaging==21.3
 pikepdf==6.2.5
 Pillow==9.3.0
 pyparsing==3.0.9
-pytube==15.0.0
+pytube==12.1.0
 Werkzeug==2.2.2
